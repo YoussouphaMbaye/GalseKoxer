@@ -4,9 +4,14 @@ Dans le but de faciliter le déplacement des citoyens sénégalais : l’applica
 
 # Acteur
 ..* Voyageurs
+
 1. Réserver une ou des places
+
 ..* Chauffeurs
+
 1. Publier voyages 
+
 ..* Administrateur
+
 1. Gestion des utilisateurs
 
