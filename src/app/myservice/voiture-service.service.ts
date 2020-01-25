@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
 import { Chauffeur } from 'app/modules/chauffeur';
 import { Observable } from 'rxjs';
@@ -51,12 +51,21 @@ export class VoitureServiceService {
   getVoyage(url:String):Observable<Voyage[]>{
     return this.httpc.get<Voyage[]>(this.host+url)
   }
+  getVoyageById(url:String):Observable<Voyage>{
+    return this.httpc.get<Voyage>(this.host+url)
+  }
   
   getVoitureById(url:String):Observable<Voiture>{
     return this.httpc.get<Voiture>(this.host+url)
   }
   addReserver(url:string,reserver:Reserver):Observable<Reserver>{
     return this.httpc.post<Reserver>(this.host+url,reserver);
+  }
+  uploadPhoto(file:File,url:string):Observable<HttpEvent<{}>>{
+    let formData:FormData =new FormData();
+    formData.append("file",file)
+    const req=new HttpRequest("POST",this.host+url,formData)
+    return this.httpc.request(req)
   }
   
 }

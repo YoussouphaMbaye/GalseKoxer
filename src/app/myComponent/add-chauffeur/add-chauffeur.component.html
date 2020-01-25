@@ -2,9 +2,24 @@
   <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
       <div class="filter"></div>
           <div class="container">
+            
+              <div class="card card-register1 mr-auto ml-auto col-md-8" *ngIf="!isSubscribe">
+                <div >
+                  <h5><p>Se connecter</p></h5>
+                <form #f="ngForm" (ngSubmit)="authChauffeur(f)">
+                  <div>
+                    <input type="text" name="tel" id="email" ngModel placeholder="00 000 00 00" class="form-control"/>
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" class="form-control m-top" ngModel/>
+                  </div>
+                  <button class="btn btn-primary m-top" >Connection</button>
+                  <button class="btn btn-primary float-right m-top" style="background-color: #4875B4;border: none;" (click)="sincrire()">Crée un compte</button>
+                  
+                </form>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="card card-register1 mr-auto ml-auto " >
+                <div class="card card-register1 mr-auto ml-auto" *ngIf="isSubscribe">
                     
                     <form class="register-form" [formGroup]="chaufForm" (ngSubmit)="addChauffeur()">
                       <div class="row">
@@ -13,44 +28,84 @@
                           <label>Nom:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="text" class="form-control" placeholder="Nom" formControlName="nom" >
-                          </div>
+                              <div *ngIf="f.nom.errors" >
+                                <div *ngIf="f.nom.errors.required">champ obligatoir</div>
+                              </div>
+                            </div>
                         </div>
                         <div class="form-group">
                           <label>Prenom:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="text" class="form-control" placeholder="Prenom" formControlName="prenom" >
-                          </div>
+                              <div *ngIf="f.prenom.errors" >
+                                <div *ngIf="f.prenom.errors.required">champ obligatoir</div>
+                              </div>
+                            </div>
                         </div>
                         <div class="form-group">
                           <label>Tel:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="text" class="form-control" placeholder="00 000 00 00" formControlName="tel" >
+                              <div *ngIf="f.tel.errors" >
+                                <div *ngIf="f.tel.errors.required">champ obligatoir</div>
+                              </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-md-6">
                         <div class="form-group">
                           <label>Matricule:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="text" class="form-control" placeholder="matricule" formControlName="matricule" >
+                              <div *ngIf="f.matricule.errors" >
+                                <div *ngIf="f.matricule.errors.required">champ obligatoir</div>
+                              </div>
                           </div>
                         </div>
+                      </div>
+                      <div class="col-md-6">
+                        
                         <div class="form-group">
                           <label>Type:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="text" class="form-control" placeholder="type" formControlName="type" >
+                              <div *ngIf="f.type.errors" >
+                                <div *ngIf="f.type.errors.required">champ obligatoir</div>
+                              </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <label>Nombre de place:</label>
                           <div  [ngClass]="{'input-group-focus':focus===true}">
                               <input type="number" class="form-control"  min="5" formControlName="nombreDePlace" >
+                              <div *ngIf="f.nombreDePlace.errors" >
+                                <div *ngIf="f.nombreDePlace.errors.required">champ obligatoir</div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Mot de passe:</label>
+                          <div  [ngClass]="{'input-group-focus':focus===true}">
+                              <input type="password" class="form-control"   formControlName="password" >
+                              
+                              <div *ngIf="f.password.errors" >
+                                <div *ngIf="f.password.errors.required">champ obligatoir</div>
+                                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Confirmé le mot de passe:</label>
+                          <div  [ngClass]="{'input-group-focus':focus===true}">
+                              <input type="password" class="form-control"  min="5" formControlName="confirmPassword" >
+                              <div *ngIf="f.confirmPassword.errors" >
+                                <div *ngIf="f.confirmPassword.errors.required">champ obligatoir</div>
+                                <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                              </div>
                           </div>
                         </div>
                         
                       </div>
                     </div>
-                        <button class="btn btn-primary btn-block btn-round">Ajouter</button>
+                        <button class="btn btn-primary btn-block btn-round" >Ajouter</button>
                     </form>
                    
                 </div>

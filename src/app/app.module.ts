@@ -22,6 +22,7 @@ import { AddClientComponent } from './myComponent/add-client/add-client.componen
 import { ChauffeurComponent } from './myComponent/chauffeur/chauffeur.component';
 import { VoyageComponent } from './myComponent/voyage/voyage.component';
 import { ListeVoyageComponent } from './myComponent/liste-voyage/liste-voyage.component';
+import { DetailsVoyageComponent } from './myComponent/details-voyage/details-voyage.component';
 
 const config=new AuthServiceConfig([
 {
@@ -50,7 +51,8 @@ export function prvideConfig(){
     AddClientComponent,
     ChauffeurComponent,
     VoyageComponent,
-    ListeVoyageComponent
+    ListeVoyageComponent,
+    DetailsVoyageComponent
   ],
   imports: [
     BrowserModule,

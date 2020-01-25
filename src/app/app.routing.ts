@@ -16,6 +16,7 @@ import { AddClientComponent } from './myComponent/add-client/add-client.componen
 import { ChauffeurComponent } from './myComponent/chauffeur/chauffeur.component';
 import {ListeVoyageComponent } from './myComponent/liste-voyage/liste-voyage.component';
 import { VoyageComponent } from './myComponent/voyage/voyage.component';
+import { DetailsVoyageComponent } from './myComponent/details-voyage/details-voyage.component';
 
 const routes: Routes =[
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,7 +32,9 @@ const routes: Routes =[
     { path: 'ajoutClient',      component: AddClientComponent },
     { path: 'chauffeur',      component: ChauffeurComponent },
     { path: 'voyage',      component: VoyageComponent },
-    { path: 'listeVoyage', component: ListeVoyageComponent }
+    { path: 'listeVoyage', component: ListeVoyageComponent },
+    { path: 'detailVoyage/:voyage', component: DetailsVoyageComponent },
+    { path: 'chauffeur/:idch', component: ChauffeurComponent },
 ];
 
 

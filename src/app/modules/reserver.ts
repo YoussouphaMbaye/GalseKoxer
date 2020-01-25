@@ -6,6 +6,7 @@ export class Reserver{
         public idreserver:number,
         public dateReserver:string,
         public nbPlace:number,
+        public tel:number,
         public client:Client,
         public voyage:Voyage,
     ){

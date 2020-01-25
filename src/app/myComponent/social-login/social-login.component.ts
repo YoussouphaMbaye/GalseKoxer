@@ -59,9 +59,9 @@ export class SocialLoginComponent implements OnInit {
         console.log(data)
         this.client=data
         if(this.client!=null){
-          sessionStorage.setItem("nom",this.client.nom);
+          sessionStorage.setItem("idClient",this.client.idClient.toString());
           
-          this.router.navigate(['/chauffeur'])
+          this.router.navigate(['/listeVoyage'])
           console.log("user not null")
         }else{
           this.router.navigate(['/socialLogin'])

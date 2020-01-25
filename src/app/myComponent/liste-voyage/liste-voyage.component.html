@@ -30,10 +30,10 @@
   </div>
 </div>
 <div  class="container" >
-  <div class="row">
-    <div class="col-md-5" *ngFor="let v of voyages._embedded.voyages"  style="padding: 5%;">
+  <div class="row"  *ngIf="voyages">
+    <div class="col-md-5" *ngFor="let v of lesVoyages"  style="padding: 5%;">
     <div class="card"  >
-      <img src="..." class="card-img-top" alt="...">
+      <img src="{{this.voitureServ.host+'/voiturePhoto/'+v.chauffeur.voiture.idVoiture}}" width="60%" />
       <div class="card-body">
         <h5>{{v.depart}}</h5>
         <div >
@@ -42,12 +42,16 @@
           <h5>{{v.destination}}</h5>
           <h5>{{v.dateDepart}}</h5>
           <h5>{{v.tarif}}</h5>
+          <h5>{{v.nbPlace}}</h5>
+          
+          
         </div>
-        <form #f="ngForm" (ngSubmit)="reserver(f,v)">
+        <form #f="ngForm" (ngSubmit)="reserver(f,v)" *ngIf="v.nbPlace > 0">
           <input type="number" min="1" name="nbPlace" ngModel required/>
           <button class="btn btn-primary" (desabled)="f.invalid">reserver</button>
         </form>
        
+        <a [routerLink]="['/detailVoyage', v.idVoyage]" class="btn btn-primary">Details</a>
         <button class="btn btn-primary" (click)="getChauffeur(v.idVoiture)">Chauffeur</button>
       </div>
     </div>

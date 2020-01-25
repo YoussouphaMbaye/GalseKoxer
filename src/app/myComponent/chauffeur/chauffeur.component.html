@@ -1,4 +1,62 @@
-<p>
-  chauffeur works!
-  <img [src]="url" alt="urlbb" width="50%"/>
-</p>
+
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/antoine-barres.jpg')">
+      <div class="filter"></div>
+      <div class="content-center">
+          <div class="container">
+              <div class="title-brand">
+                  <div class="angular-logo">
+                      <img src="assets/img/angular2-logo.png" alt="">
+                  </div>
+                  <h1 class="presentation-title">Galsen Koxer</h1>
+                  <div class="fog-low">
+                      <img src="assets/img/fog-low.png" alt="">
+                  </div>
+                  <div class="fog-low right">
+                      <img src="assets/img/fog-low.png" alt="">
+                  </div>
+              </div>
+
+              <h2 class="presentation-subtitle text-center">Nous facilitons votre voyage</h2>
+          </div>
+      </div>
+      <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
+      <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by
+      <!-- <h6 class="category category-absolute">Designed and coded by -->
+
+          <a href="https://www.creative-tim.com" target="_blank">
+              <img src="assets/img/creative-tim-white-slim2.png" class="creative-tim-logo">
+          </a>
+      </h6>
+  </div>
+</div>
+<div  class="container" >
+  
+  <div class=" card my-card mr-auto ml-auto"*ngIf="!reserver">
+    
+    <div class="ligne"> text invisble </div>
+    <div class="row">
+      <div class="col-md-6" *ngIf="chauffeur">
+        <ul class="list-group list-group-flush my-list">
+          <li class="list-group-item"><h4><span>Nom:</span> {{chauffeur.nom}}</h4></li>
+          <li class="list-group-item"><h4><span>Prenom:</span> {{chauffeur.prenom}}</h4></li>
+          <li class="list-group-item"><h4><span>Tel: </span>{{chauffeur.tel}}</h4></li>
+        </ul>
+      </div>
+      <div class="col-md-6" *ngIf="voiture">
+        <input type="file"  style="display: none;" (change)="upSelect($event)" #fileInput />
+        <input type="image" src="{{this.voitureServ.host+'/voiturePhoto/1'}}" width="95%" (click)="fileInput.click()" *ngIf="!voiture.photo"/>
+        <input type="image" src="{{this.voitureServ.host+'/voiturePhoto/'+voiture.idVoiture}}" width="60%" (click)="fileInput.click()" *ngIf="voiture.photo"/>
+        <div class="progress-bar w-75" aria-valuemin="0" aria-valuemax="100" aria-valuenow="progressBar" *ngIf="progressBar">{{progressBar}}</div>
+        <ul class="list-group list-group-flush my-list">
+          <li class="list-group-item"><h4><span>Type:</span> {{voiture.type}}</h4></li>
+          <li class="list-group-item"><h4><span>Matricule:</span> {{voiture.matricule}}</h4></li>
+          <li class="list-group-item"><h4><span>Performance moyenne: </span></h4></li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+

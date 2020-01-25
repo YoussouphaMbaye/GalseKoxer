@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <div class="page-header section-dark" style="background-image: url('assets/img/antoine-barres.jpg')">
+      <div class="filter"></div>
+      <div class="content-center">
+          <div class="container">
+              <div class="title-brand">
+                  <div class="angular-logo">
+                      <img src="assets/img/angular2-logo.png" alt="">
+                  </div>
+                  <h1 class="presentation-title">Galsen Koxer</h1>
+                  <div class="fog-low">
+                      <img src="assets/img/fog-low.png" alt="">
+                  </div>
+                  <div class="fog-low right">
+                      <img src="assets/img/fog-low.png" alt="">
+                  </div>
+              </div>
+
+              <h2 class="presentation-subtitle text-center">Nous facilitons votre voyage</h2>
+          </div>
+      </div>
+      <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
+      <h6 class=" category-absolute ml-auto mr-auto">Designed and coded by
+      <!-- <h6 class="category category-absolute">Designed and coded by -->
+
+          <a href="https://www.creative-tim.com" target="_blank">
+              <img src="assets/img/creative-tim-white-slim2.png" class="creative-tim-logo">
+          </a>
+      </h6>
+  </div>
+</div>
+<div  class="container" >
+  
+  <div class=" card my-card mr-auto ml-auto"*ngIf="!reserver">
+    <div class="card-body">
+      <div class="myTitle"><h1>{{voyage.depart}}<img src="assets/img/fleche.jpg" width="5%" class="img-fleche"/>{{voyage.destination}}</h1></div>
+      <div class="ligne"> text invisble </div>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group list-group-flush my-list">
+            <li class="list-group-item"><h4><span>Jour de depart:</span> {{voyage.dateDepart | date:'dd/MM/yyyy'}}</h4></li>
+            <li class="list-group-item"><h4><span>Heure de depart:</span> {{voyage.dateDepart | date:'h:mm' }}</h4></li>
+            <li class="list-group-item"><h4><span>Nombre de place restant: </span>{{voyage.nbPlace}}</h4></li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <img src="{{this.voitureServ.host+'/voiturePhoto/1'}}" width="60%" />
+          <ul class="list-group list-group-flush my-list">
+            <li class="list-group-item"><h4><span>Chauffeur:</span> {{chauffeur.prenom}} {{chauffeur.nom}}</h4></li>
+            <li class="list-group-item"><h4><span>tel:</span> {{chauffeur.tel}}</h4></li>
+            <li class="list-group-item"><h4><span>Performance moyenne: </span></h4></li>
+          </ul>
+        </div>
+        <button class="btn btn-primary" (click)="preReserver()">reserver</button>
+      </div>
+    </div>
+</div>
+  <div class=" card my-card mr-auto ml-auto" *ngIf="reserver">
+    <div class="card-body">
+      <div class="ligne"> text invisble </div>
+      <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="reservation(f,voyage)">
+            <div class="form-goup">
+              <label for="tel">Tel:</label>
+              <input type="text" min="1" name="tel" ngModel required class="form-control"/>
+            </div>
+            <div class="form-goup">
+              <label for="nbPlace">Nombre de place:</label>
+              <input type="number" min="1" id="nbPlace" name="nbPlace" ngModel required class="form-control"/>
+            </div>
+          
+          <button class="btn btn-primary m-top btn-round" (desabled)="f.invalid">Valider reservation</button>
+        
+        </form>
+      </div>
+</div>
+  </div>
+</div>

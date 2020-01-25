@@ -1,16 +1,22 @@
-<div class="card card-default col-md-10 mr-auto ml-auto" style="margin-top: 20%;">
-  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-md-6">
-        <input type="text" class="form-control marge-champ" placeholder="Nom" formControlName="nom"/>
-        <input type="text" class="form-control marge-champ" placeholder="Email" formControlName="email"/>
-        <button class="btn btn-primary marge-champ" [disabled]='clientForm.invalid'>Ajoutez</button>
-      </div>
-      <div class="col-md-6">
-        <input type="text" class="form-control marge-champ" placeholder="Tel:" formControlName="tel"/>
-        <input type="password" class="form-control marge-champ" placeholder="mot de passe" formControlName="password"/>
-      </div>
-      
-      </div>
-  </form>
+
+<div class="wrapper">
+  <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+      <div class="filter"></div>
+    <div class="card-register1 col-md-10 mr-auto ml-auto" >
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" class="form-control marge-champ" placeholder="Nom" formControlName="nom"/>
+            <input type="text" class="form-control marge-champ" placeholder="Email" formControlName="email"/>
+            <button class="btn btn-primary marge-champ" [disabled]='clientForm.invalid'>Ajoutez</button>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control marge-champ" placeholder="Tel:" formControlName="tel"/>
+            <input type="password" class="form-control marge-champ" placeholder="mot de passe" formControlName="password"/>
+          </div>
+          
+          </div>
+      </form>
+    </div>
+  </div>
 </div>
